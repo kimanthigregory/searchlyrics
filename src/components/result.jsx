@@ -1,10 +1,9 @@
 import "./results.css";
 
-export default function Result({ lyrics }) {
+export default function Result({ title }) {
   return (
     <section>
-      <h2>title</h2>
-      <p>lyrics</p>
+      <h2>{title}</h2>
     </section>
   );
 }
