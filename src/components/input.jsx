@@ -1,6 +1,6 @@
 import "./input.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Result from "./result";
 
 export default function InputBox() {
@@ -11,6 +11,11 @@ export default function InputBox() {
   console.log(input);
 
   const [data, setData] = useState({ songs: [] });
+  const [suggestionsOn, setSuggestionsOn] = useState(false);
+  const [submit, setSubmit] = useState(false);
+  const removeSuggestions = function () {
+    setSuggestionsOn(false);
+  };
   useEffect(() => {
     const getData = () => {
       fetch("./data.json")
@@ -22,26 +27,44 @@ export default function InputBox() {
   }, []);
   console.log(data.songs);
 
-  const filter = (songs, query) => {
-    if (query.length > 3) {
-      return songs.filter((song) => {
+  const filter = useMemo(() => {
+    if (input.length > 1) {
+      setSuggestionsOn(true);
+      setSubmit(false);
+      return data.songs.filter((song) => {
         const songname = song.title.toLowerCase();
-        return songname.includes(query.toLowerCase());
+        return songname.includes(input.toLowerCase());
       });
     } else {
       return [];
     }
+  }, [input, data.songs]);
+
+  let filteredSongs = filter;
+  const handleSubmit = function (event) {
+    event.preventDefault();
+    setSubmit(true);
   };
-  console.log(filter(data.songs, input));
-  const filteredSongs = filter(data.songs, input);
+  console.log(submit);
+  const addInput = function (event) {
+    setInput(event.target.innerText);
+    filteredSongs = [];
+  };
   return (
-    <main>
+    <main onClick={removeSuggestions}>
       <section className="header">
         <h1>search lyrics</h1>
         <p>search for your favourite Catholic song lyrics</p>
       </section>
       <section className="search">
-        <form className="search-area">
+        <form
+          className="search-area"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+          style={{
+            borderRadius: !suggestionsOn ? "8px" : "8px 8px 0 0",
+          }}
+        >
           <input
             type="search"
             id="search-area"
@@ -49,17 +72,21 @@ export default function InputBox() {
             value={input}
             onChange={handleClick}
           />
-          <button>search</button>
+          <button type="submit">search</button>
         </form>
-        {filteredSongs.length > 0 ? (
-          <ul>
+        {suggestionsOn && (
+          <div className="auto-complete">
             {filteredSongs.map((song) => (
-              <li>{song.title}</li>
+              <p onClick={addInput}>{song.title}</p>
             ))}
-          </ul>
-        ) : (
-          <h2>type more than three characters</h2>
+          </div>
         )}
+      </section>
+      <section className="song">
+        {submit &&
+          filteredSongs.map((song) => (
+            <Result key={song.id} title={song.title} lyrics={song.lyrics} />
+          ))}
       </section>
     </main>
   );
