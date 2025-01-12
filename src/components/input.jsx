@@ -41,6 +41,7 @@ export default function InputBox() {
   }, [input, data.songs]);
 
   let filteredSongs = filter;
+  console.log(filteredSongs);
   const handleSubmit = function (event) {
     event.preventDefault();
     setSubmit(true);
@@ -54,7 +55,7 @@ export default function InputBox() {
     <main onClick={removeSuggestions}>
       <section className="header">
         <h1>search lyrics</h1>
-        <p>search for your favourite Catholic song lyrics</p>
+        <p>search your favourite Catholic songs</p>
       </section>
       <section className="search">
         <form
@@ -75,10 +76,19 @@ export default function InputBox() {
           <button type="submit">search</button>
         </form>
         {suggestionsOn && (
-          <div className="auto-complete">
-            {filteredSongs.map((song) => (
-              <p onClick={addInput}>{song.title}</p>
-            ))}
+          <div
+            className="auto-complete"
+            style={{ height: filteredSongs.length == 0 ? "50px" : "200px" }}
+          >
+            {filteredSongs.length == 0 ? (
+              <p className="suggestion">No results found</p>
+            ) : (
+              filteredSongs.map((song) => (
+                <p onClick={addInput} className="suggestion">
+                  {song.title}
+                </p>
+              ))
+            )}
           </div>
         )}
       </section>

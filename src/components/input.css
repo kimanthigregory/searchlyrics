@@ -6,6 +6,10 @@ main {
 .search {
   width: 700px;
 }
+.header {
+  display: grid;
+  place-items: center;
+}
 .search-area {
   display: flex;
   background-color: #f5f5f5;
@@ -96,3 +100,18 @@ button:focus-visible {
   animation-delay: 0.3s;
 }
 /* Add more delays as needed */
+.suggestion {
+  /* padding: 0.5rem; */
+  cursor: pointer;
+  height: 2rem;
+  margin: 0.2rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: #d1cece;
+}
+
+.suggestion:hover {
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+  /* color: #f5f5f5; */
+}
