@@ -1,4 +1,5 @@
 .lyrics {
   width: 90%;
+  border-bottom: 1px solid #aaa6a6;
   /* background-color: white; */
 }
