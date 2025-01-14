@@ -15,6 +15,18 @@ main {
   display: grid;
   place-items: center;
 }
+.header h1 {
+  color: #ffffff;
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 1rem;
+}
 .search-area {
   display: flex;
   background-color: rgba(110, 110, 110, 0.5);
@@ -115,7 +127,7 @@ button:focus-visible {
   height: auto;
   margin: 0.2rem;
   padding: 0.5rem;
-  /* border-radius: 8px; */
+  border-radius: 8px;
   border-bottom: 1px solid #aaa6a6;
   /* background-color: rgba(255, 255, 255, 0.5); */
 }

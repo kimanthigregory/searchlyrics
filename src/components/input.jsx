@@ -1,5 +1,5 @@
 import "./input.css";
-
+import logo from "../assets/lyric_logo.png";
 import { useEffect, useState, useMemo } from "react";
 import Result from "./result";
 
@@ -54,8 +54,9 @@ export default function InputBox() {
   return (
     <main onClick={removeSuggestions}>
       <section className="header">
-        <h1>search lyrics</h1>
-        <p>search your favourite Catholic songs</p>
+        <img src={logo} alt="" className="logo" />
+        <h1>Search lyrics</h1>
+        <p>Search for your favourite Catholic songs</p>
       </section>
       <section className="search">
         <form
@@ -78,7 +79,12 @@ export default function InputBox() {
         {suggestionsOn && (
           <div
             className="auto-complete"
-            style={{ height: filteredSongs.length == 0 ? "50px" : "200px" }}
+            style={{
+              height:
+                filteredSongs.length == 0 || filteredSongs.length == 1
+                  ? "50px"
+                  : "200px",
+            }}
           >
             {filteredSongs.length == 0 ? (
               <p className="suggestion">No results found</p>
