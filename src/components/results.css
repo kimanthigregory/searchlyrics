@@ -1,5 +1,8 @@
 .lyrics {
-  width: 90%;
-  border-bottom: 1px solid #aaa6a6;
-  /* background-color: white; */
+  width: 100%;
+  border-bottom: 2px solid #aaa6a6;
+  background-color: rgba(110, 110, 110, 0.5);
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 8px;
 }

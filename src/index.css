@@ -28,12 +28,12 @@ body {
   place-items: center;
   max-width: 100vw;
   min-height: 100vh;
-  background-image: url("./assets/ave maria.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    /* Overlay color */ url("./assets/ave maria.jpg");
   background-position: center;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-color: #1a1a1a;
-  z-index: 0; */
 }
 main {
   display: grid;
@@ -41,10 +41,8 @@ main {
 }
 .main-content {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
   backdrop-filter: blur(3px);
-  /* opacity: 0.9; */
-  /* z-index: 3; */
 }
 .search-area {
   display: grid;

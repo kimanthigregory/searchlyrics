@@ -17,7 +17,7 @@ main {
 }
 .search-area {
   display: flex;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(110, 110, 110, 0.5);
   height: 3rem;
   padding: 0.5rem;
   border-radius: 8px 8px 0 0;
@@ -51,7 +51,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(110, 110, 110, 0.5);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -65,7 +65,7 @@ button:focus-visible {
 
 .auto-complete {
   /* width: 100%; */
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(110, 110, 110, 0.5);
   backdrop-filter: blur(1px);
   border-radius: 0 0 8px 8px;
   border-top: 1px solid #aaa6a6;
@@ -77,7 +77,7 @@ button:focus-visible {
 /* Firefox */
 .auto-complete {
   scrollbar-width: thin;
-  scrollbar-color: #b3b3b3 hsl(0, 0%, 100%);
+  scrollbar-color: rgba(110, 110, 110, 0.5) transparent;
 }
 
 /* Chrome, Edge, and Safari */
@@ -115,25 +115,32 @@ button:focus-visible {
   height: auto;
   margin: 0.2rem;
   padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid #aaa6a6;
+  /* border-radius: 8px; */
+  border-bottom: 1px solid #aaa6a6;
   /* background-color: rgba(255, 255, 255, 0.5); */
 }
 
 .suggestion:hover {
-  background-color: #aaa6a6;
+  background-color: rgba(110, 110, 110, 0.5);
   color: #f5f5f5;
   /* color: #f5f5f5; */
 }
 .song {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 50%;
+  /* width: 700px; */
+  /* width: 100%; */
   padding: 0.5rem;
 }
 
 @media (max-width: 768px) {
   .search {
+    width: 90%;
+  }
+  .song {
     width: 90%;
   }
 }
