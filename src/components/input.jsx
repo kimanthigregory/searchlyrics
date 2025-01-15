@@ -2,6 +2,10 @@ import "./input.css";
 import logo from "../assets/lyric_logo.png";
 import { useEffect, useState, useMemo } from "react";
 import Result from "./result";
+import { createContext } from "react";
+import { Outlet } from "react-router-dom";
+
+export const SongContext = createContext();
 
 export default function InputBox() {
   const [input, setInput] = useState("");
@@ -51,6 +55,9 @@ export default function InputBox() {
     setInput(event.target.innerText);
     filteredSongs = [];
   };
+  const songId = function (id) {
+    console.log(id);
+  };
   return (
     <main onClick={removeSuggestions}>
       <section className="header">
@@ -90,7 +97,11 @@ export default function InputBox() {
               <p className="suggestion">No results found</p>
             ) : (
               filteredSongs.map((song) => (
-                <p onClick={addInput} className="suggestion">
+                <p
+                  onClick={addInput}
+                  onChange={songId(song.id)}
+                  className="suggestion"
+                >
                   {song.title}
                 </p>
               ))
@@ -99,10 +110,9 @@ export default function InputBox() {
         )}
       </section>
       <section className="song">
-        {submit &&
-          filteredSongs.map((song) => (
-            <Result key={song.id} title={song.title} lyrics={song.lyrics} />
-          ))}
+        <SongContext.Provider value={{ submit, filteredSongs }}>
+          <Outlet />
+        </SongContext.Provider>
       </section>
     </main>
   );
