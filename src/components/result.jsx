@@ -2,27 +2,28 @@ import "./results.css";
 import { useContext } from "react";
 import { SongContext } from "./input";
 
-// {submit &&
-//   filteredSongs.map((song) => (
-//     <Result key={song.id} title={song.title} lyrics={song.lyrics} />
-//   ))}
-
 export default function Result() {
   const { submit, filteredSongs } = useContext(SongContext);
-  const lyrics = filteredSongs.lyrics;
-  const title = filteredSongs.title;
-  console.log(data);
-  const lines = lyrics.split("\n");
+  console.log(filteredSongs);
+  if (!submit || filteredSongs.length == 0) {
+    return null;
+  }
   return (
     <>
-      {submit && (
-        <section className="lyrics">
-          <h2>{title}</h2>
-          {lines.map((line) => {
-            return <p>{line}</p>;
-          })}
-        </section>
-      )}
+      {filteredSongs.map((song) => {
+        const lines = song.lyrics.split("\n");
+
+        return (
+          submit && (
+            <section className="lyrics" key={song.id}>
+              <h2>{song.title}</h2>
+              {lines.map((line, index) => {
+                return <p key={index}>{line}</p>;
+              })}
+            </section>
+          )
+        );
+      })}
     </>
   );
 }

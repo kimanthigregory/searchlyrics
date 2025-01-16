@@ -3,7 +3,7 @@ import logo from "../assets/lyric_logo.png";
 import { useEffect, useState, useMemo } from "react";
 import Result from "./result";
 import { createContext } from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 export const SongContext = createContext();
 
@@ -17,6 +17,7 @@ export default function InputBox() {
   const [data, setData] = useState({ songs: [] });
   const [suggestionsOn, setSuggestionsOn] = useState(false);
   const [submit, setSubmit] = useState(false);
+  const [filteredSongs, setFilteredSongs] = useState([]);
   const removeSuggestions = function () {
     setSuggestionsOn(false);
   };
@@ -31,29 +32,30 @@ export default function InputBox() {
   }, []);
   console.log(data.songs);
 
-  const filter = useMemo(() => {
+  useEffect(() => {
     if (input.length > 1) {
       setSuggestionsOn(true);
       setSubmit(false);
-      return data.songs.filter((song) => {
-        const songname = song.title.toLowerCase();
-        return songname.includes(input.toLowerCase());
-      });
+      const songs = data.songs.filter((song) =>
+        song.title.toLowerCase().includes(input.toLowerCase())
+      );
+      setFilteredSongs(songs);
     } else {
-      return [];
+      setSuggestionsOn(false);
+      setFilteredSongs([]);
     }
   }, [input, data.songs]);
 
-  let filteredSongs = filter;
   console.log(filteredSongs);
   const handleSubmit = function (event) {
     event.preventDefault();
+    navigate();
     setSubmit(true);
   };
   console.log(submit);
   const addInput = function (event) {
     setInput(event.target.innerText);
-    filteredSongs = [];
+    setFilteredSongs([]);
   };
   const songId = function (id) {
     console.log(id);
@@ -101,6 +103,7 @@ export default function InputBox() {
                   onClick={addInput}
                   onChange={songId(song.id)}
                   className="suggestion"
+                  key={song.id}
                 >
                   {song.title}
                 </p>
