@@ -3,11 +3,13 @@ import logo from "../assets/lyric_logo.png";
 import { useEffect, useState, useMemo } from "react";
 import Result from "./result";
 import { createContext } from "react";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export const SongContext = createContext();
 
 export default function InputBox() {
+  const navigate = useNavigate();
+
   const [input, setInput] = useState("");
   const handleClick = function (event) {
     setInput(event.target.value);
@@ -49,13 +51,31 @@ export default function InputBox() {
   console.log(filteredSongs);
   const handleSubmit = function (event) {
     event.preventDefault();
-    navigate();
-    setSubmit(true);
+
+    if (filteredSongs.length > 0) {
+      navigate(`/song/${filteredSongs[0].id}`);
+    } else {
+      alert("No songs found.");
+    }
   };
   console.log(submit);
   const addInput = function (event) {
-    setInput(event.target.innerText);
-    setFilteredSongs([]);
+    const selectedSongTitle = event.target?.innerText?.toLowerCase();
+    if (!selectedSongTitle) return;
+
+    const filtered = data.songs.filter(
+      (song) => song.title.toLowerCase() === selectedSongTitle
+    );
+
+    if (filtered.length > 0) {
+      const songId = filtered[0].id;
+      navigate(`/song/${songId}`);
+      setSuggestionsOn(false); // Hide suggestions
+      // setInput(selectedSongTitle);
+      // setFilteredSongs(filtered);
+    } else {
+      console.warn("Selected song not found!");
+    }
   };
   const songId = function (id) {
     console.log(id);

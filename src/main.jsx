@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/song",
+        path: "/song/:songId",
         element: <Result />,
       },
     ],
