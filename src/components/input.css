@@ -10,6 +10,7 @@ main {
 }
 .search {
   width: 700px;
+  z-index: 10;
 }
 .header {
   display: grid;
@@ -85,6 +86,7 @@ button:focus-visible {
   color: white;
   height: 200px;
   overflow-x: hidden;
+  z-index: 10;
 }
 /* Firefox */
 .auto-complete {

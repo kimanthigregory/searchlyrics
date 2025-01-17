@@ -20,15 +20,20 @@ export default function InputBox() {
   const [suggestionsOn, setSuggestionsOn] = useState(false);
   const [submit, setSubmit] = useState(false);
   const [filteredSongs, setFilteredSongs] = useState([]);
+  const [error, setError] = useState(null);
   const removeSuggestions = function () {
     setSuggestionsOn(false);
   };
   useEffect(() => {
-    const getData = () => {
-      fetch("./data.json")
-        .then((response) => response.json())
-        .then((data) => setData(data))
-        .catch((error) => console.log(error));
+    const getData = async () => {
+      try {
+        const response = await fetch("/data.json");
+        if (!response.ok) throw new Error("Failed to fetch songs");
+        const json = await response.json();
+        setData(json);
+      } catch (err) {
+        setError(err.message);
+      }
     };
     getData();
   }, []);
@@ -124,6 +129,7 @@ export default function InputBox() {
                   onChange={songId(song.id)}
                   className="suggestion"
                   key={song.id}
+                  onTouchMove={(e) => e.stopPropagation()}
                 >
                   {song.title}
                 </p>
