@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 
 // import { useState } from "react";
 // import background from "./assets/ave maria.jpg";
@@ -9,7 +9,7 @@ import InputBox from "./components/input";
 import ErrorPage from "./error-page";
 import Result from "./components/result";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <InputBox />,
