@@ -14,7 +14,6 @@ export default function InputBox() {
   const handleClick = function (event) {
     setInput(event.target.value);
   };
-  console.log(input);
 
   const [data, setData] = useState({ songs: [] });
   const [suggestionsOn, setSuggestionsOn] = useState(false);
@@ -37,7 +36,6 @@ export default function InputBox() {
     };
     getData();
   }, []);
-  console.log(data.songs);
 
   useEffect(() => {
     if (input.length > 1) {
@@ -53,7 +51,6 @@ export default function InputBox() {
     }
   }, [input, data.songs]);
 
-  console.log(filteredSongs);
   const handleSubmit = function (event) {
     event.preventDefault();
 
@@ -63,7 +60,6 @@ export default function InputBox() {
       alert("No songs found.");
     }
   };
-  console.log(submit);
   const addInput = function (event) {
     const selectedSongTitle = event.target?.innerText?.toLowerCase();
     if (!selectedSongTitle) return;

@@ -6,10 +6,8 @@ import { useParams } from "react-router-dom";
 export default function Result() {
   const { songId } = useParams();
   const { submit, filteredSongs } = useContext(SongContext);
-  console.log(filteredSongs);
 
   const song = filteredSongs.find((song) => song.id.toString() === songId);
-  console.log(song);
 
   if (!song) {
     return null;
