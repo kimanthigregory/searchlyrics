@@ -12,6 +12,7 @@ main {
 .header {
   display: grid;
   place-items: center;
+  text-align: center;
 }
 .header h1 {
   color: #ffffff;

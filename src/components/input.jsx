@@ -57,7 +57,7 @@ export default function InputBox() {
     if (filteredSongs.length > 0) {
       navigate(`/song/${filteredSongs[0].id}`);
     } else {
-      alert("No songs found.");
+      navigate(`/}`);
     }
   };
   const addInput = function (event) {
@@ -85,8 +85,10 @@ export default function InputBox() {
     <main onClick={removeSuggestions}>
       <section className="header">
         <img src={logo} alt="" className="logo" />
-        <h1>Search lyrics</h1>
-        <p>Search for your favourite Catholic songs</p>
+        <h1>Discover Catholic Song Lyrics</h1>
+        <p>
+          Effortlessly find lyrics to your favorite Catholic hymns and songs
+        </p>
       </section>
       <section className="search">
         <form
@@ -127,7 +129,7 @@ export default function InputBox() {
                   key={song.id}
                   onTouchMove={(e) => e.stopPropagation()}
                 >
-                  {song.title}
+                  {song.title.toLowerCase()}
                 </p>
               ))
             )}
