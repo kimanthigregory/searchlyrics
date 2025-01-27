@@ -78,9 +78,6 @@ export default function InputBox() {
       console.warn("Selected song not found!");
     }
   };
-  const songId = function (id) {
-    console.log(id);
-  };
   return (
     <main onClick={removeSuggestions}>
       <section className="header">
@@ -124,7 +121,6 @@ export default function InputBox() {
               filteredSongs.map((song) => (
                 <p
                   onClick={addInput}
-                  onChange={songId(song.id)}
                   className="suggestion"
                   key={song.id}
                   onTouchMove={(e) => e.stopPropagation()}
