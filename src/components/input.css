@@ -13,6 +13,7 @@ main {
   display: grid;
   place-items: center;
   text-align: center;
+  margin: 1rem;
 }
 .header h1 {
   color: #ffffff;
@@ -143,7 +144,7 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   .search {
-    width: 90%;
+    width: 98%;
   }
   .song {
     width: 90%;
