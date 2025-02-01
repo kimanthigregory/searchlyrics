@@ -1,5 +1,5 @@
 import "./input.css";
-import logo from "../assets/lyric_logo.png";
+import logo from "../assets/lyric_logo.webp";
 import { useEffect, useState, useMemo } from "react";
 import Result from "./result";
 import { createContext } from "react";
