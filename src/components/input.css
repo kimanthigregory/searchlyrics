@@ -144,9 +144,9 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   .search {
-    width: 98%;
+    width: 96%;
   }
   .song {
-    width: 88%;
+    width: 86%;
   }
 }
