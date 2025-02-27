@@ -147,7 +147,10 @@ button:focus-visible {
 }
 footer {
   text-align: center;
-  padding: 20px 0;
+  padding: 5px 0;
+}
+footer p {
+  margin: 0;
 }
 
 .footer-disclaimer {
