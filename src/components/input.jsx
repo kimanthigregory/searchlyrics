@@ -80,6 +80,7 @@ export default function InputBox() {
   };
   return (
     <main onClick={removeSuggestions}>
+      <section className="nav"></section>
       <section className="header">
         <img src={logo} alt="" className="logo" />
         <h1>Discover Catholic Song Lyrics</h1>
@@ -137,6 +138,12 @@ export default function InputBox() {
           <Outlet />
         </SongContext.Provider>
       </section>
+      <footer>
+        <p class="footer-disclaimer">
+          Disclaimer: Lyrics are limited to songs sung at St. Mary's Catholic
+          Kiserian.
+        </p>
+      </footer>
     </main>
   );
 }

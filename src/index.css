@@ -25,12 +25,24 @@ body {
   place-items: center;
   max-width: 100vw;
   max-height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    /* Overlay color */ url("./assets/ave maria.webp");
+
+  background-color: #1a1a1a; /* Solid dark background */
+  position: relative; /* Needed for the pseudo-element */
+  color: #ffffff;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0) 50%, #000000 100%);
+  pointer-events: none; /* Allows clicks to pass through */
 }
 main {
   display: grid;

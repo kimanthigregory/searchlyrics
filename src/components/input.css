@@ -21,10 +21,14 @@ main {
   line-height: 1.1;
   margin: 0.5rem 0 0.5rem 0;
 }
-
+.nav {
+  display: flex;
+  align-self: flex-start;
+  margin: 1rem;
+}
 .logo {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   margin-bottom: 1rem;
 }
 .search-area {
@@ -140,6 +144,15 @@ button:focus-visible {
   align-items: center;
   width: 50%;
   padding: 0.5rem;
+}
+footer {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.footer-disclaimer {
+  font-size: 0.7em;
+  color: #888;
 }
 
 @media (max-width: 768px) {
