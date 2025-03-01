@@ -8,6 +8,7 @@ import "./index.css";
 import InputBox from "./components/input";
 import ErrorPage from "./error-page";
 import Result from "./components/result";
+import Admin from "./components/admin";
 
 const router = createHashRouter([
   {
@@ -18,8 +19,13 @@ const router = createHashRouter([
       {
         path: "/song/:songId",
         element: <Result />,
+        errorElement: <ErrorPage />,
       },
     ],
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
   },
 ]);
 
